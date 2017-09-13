@@ -1,13 +1,15 @@
 package com.ejemplos.spring.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,13 +24,12 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "personas", catalog = "agenda")
 public class Personas implements java.io.Serializable {
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer idpersonas;
 	private Empleados empleados;
+	private Integer idpersonas;
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
@@ -45,8 +46,7 @@ public class Personas implements java.io.Serializable {
 		this.apellido1 = apellido1;
 	}
 	
-	public Personas(String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento) {
+	public Personas(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;

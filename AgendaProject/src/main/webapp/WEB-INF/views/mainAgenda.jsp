@@ -24,7 +24,7 @@
 
 		<table border="1">
 		<tr>
-			<th>ID</th>
+			<th>Index</th>
 			<th>ID persona</th>
 			<th>Nombre</th>
 			<th>Fecha nacimiento</th>
@@ -37,7 +37,8 @@
 					<td>${user.idpersonas}</td>
 					<td>${user.nombre}</td>
 					<td>${user.fechaNacimiento}</td>
-					<td><a href="edit?id=${user.idpersonas}">Modificar</a>
+					<td><a href="view?id=${user.idpersonas}">Perfil</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; <a href="modify?id=${user.idpersonas}">Modificar</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=${user.idpersonas}">Eliminar</a>
 					</td>
 				</tr>
