@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ejemplos.spring.model.Empleados;
 import com.ejemplos.spring.model.Personas;
+
 import com.ejemplos.spring.services.IContactoService;
 
 @Controller
@@ -50,6 +50,15 @@ public class AgendaController {
 		int userId = Integer.parseInt(request.getParameter("id"));
 		iContactoService.borrarContacto(userId);
 		return new ModelAndView("redirect:/");		
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Personas persona = iContactoService.get(userId);
+		ModelAndView model = new ModelAndView("contactoForm");
+		model.addObject("user", persona);
+		return model;		
 	}
 
 }

@@ -14,20 +14,23 @@ public class ContactoService implements IContactoService {
 	@Autowired
 	private IContactoDAO iContactoDao;
 	
-	@Override
 	public List<Personas> list() {
 		return iContactoDao.list();
 	}
 	
-	@Override
 	public Personas get(int id) {
 		return iContactoDao.get(id);
 	}
 	
-	@Override
 	public void modificar(Personas personas) {
 		iContactoDao.modificarEmp(personas);
 	}
+
+	public void borrarContacto(int idPersona) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejemplos.spring.model.Personas;
 
+
+
 @Repository
 public class ContactoDAO implements IContactoDAO {
 	
@@ -25,7 +27,6 @@ public class ContactoDAO implements IContactoDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
 	@Transactional
 	public List<Personas> list() {
 		@SuppressWarnings("unchecked")
@@ -36,10 +37,9 @@ public class ContactoDAO implements IContactoDAO {
 		return listaPersonas;
 	}
 	
-	@Override
 	@Transactional
 	public Personas get(int id) {
-		String hql = "from User where id=" + id;
+		String hql = "from personas where idpersonas=" + id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -52,7 +52,6 @@ public class ContactoDAO implements IContactoDAO {
 		return null;
 	}
 	
-	@Override
 	@Transactional
 	public void modificarEmp(Personas personas) {
 		sessionFactory.getCurrentSession().saveOrUpdate(personas);;
