@@ -32,6 +32,18 @@ public class AgendaController {
 		return model;
 	}
 	
+	
+	@RequestMapping("listado")
+	public ModelAndView handleRequestListado() throws Exception {
+		List<Personas> listaPersonas = iContactoService.list();
+		ModelAndView model = new ModelAndView("mainAgenda");
+		model.addObject("userList", listaPersonas);
+		for (Personas p : listaPersonas) {
+			System.out.println(p.getApellido1());
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView newUser() {
 		ModelAndView model = new ModelAndView("contactoForm");
@@ -39,8 +51,27 @@ public class AgendaController {
 		return model;		
 	}
 	
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public ModelAndView viewUser(HttpServletRequest request) {
+		int idPersona = Integer.parseInt(request.getParameter("id"));
+		Personas personas = iContactoService.get(idPersona);
+		ModelAndView model = new ModelAndView("viewContactoForm");
+		model.addObject("user", personas);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public ModelAndView editUser(HttpServletRequest request) {
+		int idPersona = Integer.parseInt(request.getParameter("id"));
+		Personas personas = iContactoService.get(idPersona);
+		ModelAndView model = new ModelAndView("contactoForm");
+		model.addObject("user", personas);
+		return model;		
+	}
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute Personas personas) {
+		System.out.println(" -+--+-+--+-+-+-+(POST) "+personas.getNombre());
 		iContactoService.modificar(personas);
 		return new ModelAndView("redirect:/");
 	}

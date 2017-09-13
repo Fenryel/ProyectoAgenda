@@ -39,7 +39,7 @@ public class ContactoDAO implements IContactoDAO {
 	@Override
 	@Transactional
 	public Personas get(int id) {
-		String hql = "from User where id=" + id;
+		String hql = "from Personas where idpersonas=" + id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -55,7 +55,15 @@ public class ContactoDAO implements IContactoDAO {
 	@Override
 	@Transactional
 	public void modificarEmp(Personas personas) {
-		sessionFactory.getCurrentSession().saveOrUpdate(personas);;
+		System.out.println(" <><><><><> "+personas.getNombre());
+		sessionFactory.getCurrentSession().saveOrUpdate(personas);
+	}
+	
+	@Transactional
+	public void borrarContacto(int idPersona) {
+		Personas borrarPersona = new Personas();
+		borrarPersona.setIdpersonas(idPersona);
+		sessionFactory.getCurrentSession().delete(borrarPersona);
 	}
 
 }
