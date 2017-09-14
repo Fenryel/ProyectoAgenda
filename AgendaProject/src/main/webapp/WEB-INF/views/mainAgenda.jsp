@@ -23,7 +23,7 @@
 		<table border="1" class="table table-hover">
 		<thead class="encabezado">
 		<tr>
-			<th>ID</th>
+			<th>Index</th>
 			<th>ID persona</th>
 			<th>Nombre</th>
 			<th>Fecha nacimiento</th>
@@ -36,12 +36,14 @@
 					<td>${user.idpersonas}</td>
 					<td>${user.nombre}</td>
 					<td>${user.fechaNacimiento}</td>
-					<td><a href="edit?id=${user.idpersonas}">Modificar</a>
+					<td><a href="view?id=${user.idpersonas}">Perfil</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; <a href="modify?id=${user.idpersonas}">Modificar</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=${user.idpersonas}">Eliminar</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<h3><a href="administrar">Entrar como administrador (administrar Deptos/Catergorias)</a></h3>
 	</div>
 </body>
 </html>

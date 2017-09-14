@@ -1,13 +1,16 @@
 package com.ejemplos.spring.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,9 +25,12 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "personas", catalog = "agenda")
 public class Personas implements java.io.Serializable {
-
-	private Integer idpersonas;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Empleados empleados;
+	private Integer idpersonas;
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
@@ -32,6 +38,7 @@ public class Personas implements java.io.Serializable {
 	private Date fechaNacimiento;
 	private Set<Direcciones> direccioneses = new HashSet<Direcciones>(0);
 	private Set<Telefonos> telefonoses = new HashSet<Telefonos>(0);
+	
 
 	public Personas() {
 	}
@@ -41,8 +48,7 @@ public class Personas implements java.io.Serializable {
 		this.apellido1 = apellido1;
 	}
 	
-	public Personas(String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento) {
+	public Personas(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -74,7 +80,7 @@ public class Personas implements java.io.Serializable {
 		this.idpersonas = idpersonas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade =CascadeType.REMOVE)
 	@JoinColumn(name = "idEmpleado")
 	public Empleados getEmpleados() {
 		return this.empleados;
@@ -130,7 +136,7 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas", cascade =CascadeType.REMOVE)
 	public Set<Direcciones> getDireccioneses() {
 		return this.direccioneses;
 	}
@@ -139,7 +145,7 @@ public class Personas implements java.io.Serializable {
 		this.direccioneses = direccioneses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas", cascade =CascadeType.REMOVE)
 	public Set<Telefonos> getTelefonoses() {
 		return this.telefonoses;
 	}

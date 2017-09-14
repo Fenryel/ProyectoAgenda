@@ -23,6 +23,10 @@ import javax.persistence.TemporalType;
 @Table(name = "empleados", catalog = "agenda")
 public class Empleados implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idempleados;
 	private Categorias categorias;
 	private Departamentos departamentos;
@@ -115,6 +119,8 @@ public class Empleados implements java.io.Serializable {
 
 	public void setPersonases(Set<Personas> personases) {
 		this.personases = personases;
+		Personas p = new Personas();
+		personases.add(p);
 	}
 
 }
