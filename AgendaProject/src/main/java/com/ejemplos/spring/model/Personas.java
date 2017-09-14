@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,6 +38,7 @@ public class Personas implements java.io.Serializable {
 	private Date fechaNacimiento;
 	private Set<Direcciones> direccioneses = new HashSet<Direcciones>(0);
 	private Set<Telefonos> telefonoses = new HashSet<Telefonos>(0);
+	
 
 	public Personas() {
 	}
@@ -78,7 +80,7 @@ public class Personas implements java.io.Serializable {
 		this.idpersonas = idpersonas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade =CascadeType.REMOVE)
 	@JoinColumn(name = "idEmpleado")
 	public Empleados getEmpleados() {
 		return this.empleados;
@@ -134,7 +136,7 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas", cascade =CascadeType.REMOVE)
 	public Set<Direcciones> getDireccioneses() {
 		return this.direccioneses;
 	}
@@ -143,7 +145,7 @@ public class Personas implements java.io.Serializable {
 		this.direccioneses = direccioneses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas", cascade =CascadeType.REMOVE)
 	public Set<Telefonos> getTelefonoses() {
 		return this.telefonoses;
 	}

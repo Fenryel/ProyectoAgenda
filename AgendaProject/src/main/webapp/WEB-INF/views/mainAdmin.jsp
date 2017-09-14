@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <html>
@@ -25,8 +24,12 @@
 	<div align="center">
 		<h1>FORMULARIO DE CONTACTO</h1>
 		<table>
-			<form:form action="save" method="post" modelAttribute="user">
+			<form:form action="listado" method="post" modelAttribute="user">
 				<form:hidden path="idpersonas" />
+				<tr>
+					<td>ID persona:</td>
+					<td><form:input path="idpersonas" /></td>
+				</tr>
 				<tr>
 					<td>Nombre:</td>
 					<td><form:input path="nombre" /></td>
@@ -45,13 +48,11 @@
 				</tr>
 				<tr>
 					<td>Fecha nacimiento:</td>
-					<fmt:formatDate value="${user.fechaNacimiento}" var="dateString" pattern="dd/MM/yyyy" />
-					<td><form:input path="fechaNacimiento" value="${dateString}" /></td>
+					<td><form:input path="fechaNacimiento" /></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="Guardar Registro" />
-					</td>
+					<td colspan="2" align="center"><input type="submit"
+						value="Atras"></td>
 				</tr>
 			</form:form>
 		</table>

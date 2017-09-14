@@ -9,10 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ejemplos.spring.model.Personas;
-
 import com.ejemplos.spring.services.IContactoService;
 
 @Controller
@@ -71,7 +71,6 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute Personas personas) {
-		System.out.println(" -+--+-+--+-+-+-+(POST) "+personas.getNombre());
 		iContactoService.modificar(personas);
 		return new ModelAndView("redirect:/");
 	}
@@ -82,14 +81,17 @@ public class AgendaController {
 		iContactoService.borrarContacto(userId);
 		return new ModelAndView("redirect:/");		
 	}
+
 	
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView editUser(HttpServletRequest request) {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		Personas persona = iContactoService.get(userId);
-		ModelAndView model = new ModelAndView("contactoForm");
-		model.addObject("user", persona);
-		return model;		
+	@RequestMapping(value = "/administrar", method = RequestMethod.GET)
+	public ModelAndView administrar() {
+		List<Personas> listaDeptos = iContactoService.list();
+		ModelAndView model = new ModelAndView("mainAgenda");
+		model.addObject("userList", listaDeptos);
+	
+		return model;	
 	}
+	
+	
 
 }

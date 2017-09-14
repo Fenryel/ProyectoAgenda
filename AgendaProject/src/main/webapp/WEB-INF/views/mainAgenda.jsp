@@ -44,6 +44,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<h3><a href="administrar">Entrar como administrador (administrar Deptos/Catergorias)</a></h3>
 	</div>
 </body>
 </html>

@@ -119,6 +119,8 @@ public class Empleados implements java.io.Serializable {
 
 	public void setPersonases(Set<Personas> personases) {
 		this.personases = personases;
+		Personas p = new Personas();
+		personases.add(p);
 	}
 
 }

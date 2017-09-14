@@ -60,7 +60,7 @@ public class ContactoDAO implements IContactoDAO {
 	
 	@Transactional
 	public void borrarContacto(int idPersona) {
-		Personas borrarPersona = new Personas();
+		Personas borrarPersona = this.get(idPersona);
 		borrarPersona.setIdpersonas(idPersona);
 		sessionFactory.getCurrentSession().delete(borrarPersona);
 	}

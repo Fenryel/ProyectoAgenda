@@ -26,15 +26,11 @@ public class ContactoService implements IContactoService {
 		iContactoDao.modificarEmp(personas);
 	}
 	
-	@Override
 	public void borrarContacto(int idPersona) {
 		iContactoDao.borrarContacto(idPersona);
 	}
 
-	public void borrarContacto(int idPersona) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 
