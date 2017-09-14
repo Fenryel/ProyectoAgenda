@@ -51,5 +51,13 @@ public class AgendaController {
 		iContactoService.borrarContacto(userId);
 		return new ModelAndView("redirect:/");		
 	}
-
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Personas person = iContactoService.get(userId);
+		ModelAndView model = new ModelAndView("contactoForm");
+		model.addObject("person",person);
+		return model;
+	}
 }

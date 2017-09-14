@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejemplos.spring.model.Personas;
 
+
 @Repository
 public class ContactoDAO implements IContactoDAO {
 	
@@ -56,6 +57,14 @@ public class ContactoDAO implements IContactoDAO {
 	@Transactional
 	public void modificarEmp(Personas personas) {
 		sessionFactory.getCurrentSession().saveOrUpdate(personas);;
+	}
+	
+	@Override
+	@Transactional
+	public void delete(int id) {
+		Personas personToDelete = new Personas();
+		personToDelete.setIdpersonas(id);
+		sessionFactory.getCurrentSession().delete(personToDelete);
 	}
 
 }

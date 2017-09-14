@@ -8,10 +8,8 @@
 <head>
 <meta charset="UTF-8">
 
-        <spring:url value="static/css/bootstrap.css" var="bootstrap"/>
-        <link href="${bootstrap}" rel="stylesheet" />
-        <spring:url value="static/css/custom.css" var="custom"/>
-        <link href="${custom}" rel="stylesheet" />  
+        <style> <%@include file="/resources/css/bootstrap.css" %> </style>
+        <style> <%@include file="/resources/css/custom.css" %> </style>    
 
 <title>LISTADO DE USUARIOS</title>
 </head>
@@ -22,15 +20,16 @@
 			<a href="new">CREAR NUEVO EMPLEADO</a>
 		</h3>
 
-		<table border="1">
+		<table border="1" class="table table-hover">
+		<thead class="encabezado">
 		<tr>
 			<th>ID</th>
 			<th>ID persona</th>
 			<th>Nombre</th>
 			<th>Fecha nacimiento</th>
 			<th>Acciones</th>
-			</tr>
-
+		</tr>
+		</thead>
 			<c:forEach var="user" items="${userList}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>

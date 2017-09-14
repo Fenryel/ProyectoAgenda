@@ -29,5 +29,11 @@ public class ContactoService implements IContactoService {
 		iContactoDao.modificarEmp(personas);
 	}
 
+	@Override
+	public void borrarContacto(int idPersona) {
+		iContactoDao.delete(idPersona);
+		
+	}
+
 
 }

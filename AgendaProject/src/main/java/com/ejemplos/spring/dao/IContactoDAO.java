@@ -11,5 +11,7 @@ public interface IContactoDAO {
 	public Personas get(int id);
 	
 	public void modificarEmp(Personas personas);
+	
+	public void delete(int id);
 
 }

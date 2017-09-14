@@ -8,51 +8,41 @@
 <meta charset="UTF-8">
 
 
-		<spring:url value="/resources/css/bootstrap.css" var="estilos1" />
-		<link href="${estilos1}" rel="stylesheet" />
-		
-		<spring:url value="/resources/css/custom.css" var="estilos3" />
-		<link href="${estilos3}" rel="stylesheet" />		
-	
-		<spring:url value="css/bootstrap.css" var="estilos2" />
-		<link href="${estilos2}" rel="stylesheet" />	
-		
-        <link href="<c:url value='/static/css/custom.css' />" rel="stylesheet"></link>
+		<style> <%@include file="/resources/css/bootstrap.css" %> </style>
+        <style> <%@include file="/resources/css/custom.css" %> </style> 
+        
 <title>FORMULARIO DE USUARIOS</title>
 </head>
 <body>
-	<div align="center">
-		<h1>FORMULARIO DE CONTACTO</h1>
-		<table>
-			<form:form action="save" method="post" modelAttribute="user">
-				<form:hidden path="idpersonas" />
-				<tr>
-					<td>Nombre:</td>
-					<td><form:input path="nombre" /></td>
-				</tr>
-				<tr>
-					<td>Primer apellido:</td>
-					<td><form:input path="apellido1" /></td>
-				</tr>
-				<tr>
-					<td>Segundo apellido:</td>
-					<td><form:input path="apellido2" /></td>
-				</tr>
-				<tr>
-					<td>DNI:</td>
-					<td><form:input path="dni" /></td>
-				</tr>
-				<tr>
-					<td>Fecha nacimiento:</td>
-					<td><form:input path="fechaNacimiento" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Guardar Registro"></td>
-				</tr>
-			</form:form>
-		</table>
-	</div>
-
+	<div class="container contenedor">
+	<h1>Formulario de ingreso</h1>
+	<form action="save" method="post" modelAttribute="user">
+		<div class="form-group">
+		  <label for="nombre">Nombre</label>
+		  <input type="text" class="form-control" id="nombre" path="nombre">
+		</div>
+		<div class="form-group">
+		  <label for="appellido1">Apellido1</label>
+		  <input type="text" class="form-control" id="apellido1" path="apellido1">
+		</div>
+		<div class="form-group">
+		  <label for="appellido2">Apellido2</label>
+		  <input type="text" class="form-control" id="apellido1" path="apellido2">
+		</div>
+		<div class="form-group">
+		  <label for="dni">DNI</label>
+		  <input type="text" class="form-control" id="apellido1" path="dni">
+		</div>
+		<div class="form-group">
+		  <label for="fnacimiento">Fecha nacimiento</label>
+		  <input type="date" class="form-control" id="fnacimiento" path="fechaNacimiento">
+		</div>
+		<div class="form-group">
+		  <label for="idpersona">ID persona</label>
+		  <input type="text" class="form-control" id="idpersona" path="idEmpleado">
+		</div>
+		<button type="submit" class="btn btn-default">Agregar contacto</button>
+		</form>
+</div>
 </body>
 </html>
